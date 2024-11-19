@@ -1,0 +1,92 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PUCMM firma dinámica</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://laramirez0310.github.io/OfficeSignature/src/taskpane/CSS/editsignature.css" rel="stylesheet" type="text/css" media="all" />
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="https://laramirez0310.github.io/OfficeSignature/src/utilities.js"></script>
+  <script type="text/javascript" src="https://laramirez0310.github.io/OfficeSignature/src/taskpane/Js/taskpane_render.js"></script>
+</head>
+ 
+<body>  
+  <div class="container">
+    <h2>Verificar firma</h2>
+    <p>1. Haga clic en el botón cargar datos para visualizar su información completa.<br/><br/>
+      2. Haga clic en el botón guardar para salvar la información.
+    </p>
+
+    <input type="text" id="display_name" placeholder="Name*" readonly onclick="this.select()" required />
+
+    <input type="email" id="email_id" placeholder="Email address*" readonly onclick="this.select()" required />
+
+    <input type="text" id="job_title" placeholder="Puesto" readonly />
+
+    <input type="text" id="phone_number" placeholder="Phone number" readonly/>
+
+    <input type="text" placeholder="Eg: Thank you," id="greeting_text" readonly style="display:none;"/>
+
+    <input type="text" placeholder="Dependencia" id="preferred_pronoun" readonly />
+
+    <button id="cargar_datos" onclick="cargar_datos()">Cargar Datos</button>
+    <button id="next_button_t1" class="registerbtn" onclick="create_user_info()">Guardar</button>
+<!--
+    <button id="reset_all_config_btn" class="registerbtn" onclick="reset_all_configuration()">RESET ALL</button>
+-->
+    <p id="message"></p>
+  </div>
+
+</body>
+<script>
+  var correo = document.querySelector('#email_id');
+  var nombre = document.querySelector('#display_name');  
+  var cargo = document.querySelector('#job_title');
+  var tel = document.querySelector('#phone_number');
+  var unidad = document.querySelector('#preferred_pronoun');
+
+  function cargar_datos() {
+
+    correo = document.querySelector('#email_id').value;
+   // console.log('funcionando ' + nombre + correo + cargo + tel + unidad);
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "email": correo
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://prod-79.westus.logic.azure.com:443/workflows/274b4a9f4c3c4983bf5b6e4800c6448a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=4a0XwtuCOqmPB4-g-vy23Ph8H9SzC-pbWZQxKwUbZAM", requestOptions)
+      .then(response => response.json())
+      .then(result => { dataUser(result) })
+      .catch(error => console.log('error', error));
+  }
+
+  function dataUser(datos) {
+      nombre.value = datos.name;
+      cargo.value = datos.jobtitle;
+      if(datos.phone[0]== null)
+      { 
+        tel.value = '1 (809) 580-1962';
+      }else{
+        tel.value = '1 (809) 580-1962 Ext.: ' + datos.phone[0];
+
+      }
+      
+      unidad.value = datos.department;
+    }
+  
+</script>
+</html>
