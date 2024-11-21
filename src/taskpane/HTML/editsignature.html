@@ -77,11 +77,11 @@
   function dataUser(datos) {
       nombre.value = datos.name;
       cargo.value = datos.jobtitle;
-      if(datos.phone[0]== null)
+      if(datos.phone[0]== null || datos.phone[0].trim() == '')
       { 
-        tel.value = '1 (809) 580-1962';
+        tel.value = datos.hphone;
       }else{
-        tel.value = '1 (809) 580-1962 Ext.: ' + datos.phone[0];
+        tel.value = datos.hphone + ' Ext.: ' + datos.phone[0];
 
       }
       
