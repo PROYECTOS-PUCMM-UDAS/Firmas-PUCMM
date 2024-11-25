@@ -148,8 +148,8 @@ function create_user_info()
 
     //console.log(user_info);
     localStorage.setItem('user_info', JSON.stringify(user_info));
-    //navigate_to_taskpane_assignsignature();
-    save_signature_settings();
+    navigate_to_taskpane_assignsignature();
+    //save_signature_settings();
   }
 }
 
