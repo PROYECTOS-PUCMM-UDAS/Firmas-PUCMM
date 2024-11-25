@@ -24,6 +24,17 @@
   display: none;
 }
 
+#submit_button{
+  position: relative;
+  left: 110px;
+  width: 86px;
+  height: 32px;
+  color: white;
+  background: #0078D4 0% 0% no-repeat padding-box;
+  border-radius: 2px;
+  opacity: 1;
+}
+
 input {
   height: 45px;
   width: 267px;
@@ -93,6 +104,7 @@ input[type=text], input[type=number], input[type=email] {
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
   -o-transition: all 0.30s ease-in-out;
+  transition: all 0.30s ease-in-out;
   outline: none;
   /*padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;*/
