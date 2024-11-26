@@ -117,3 +117,80 @@ input[type=text]:focus, input[type=number]:focus, input[type=email]:focus {
   margin: 5px 1px 3px 0px;*/
   border: 1px solid rgba(81, 203, 238, 1);
 }
+
+#label-checkbox{
+  position:relative; 
+  left:120px; 
+  display: none;
+}
+
+#override_sig{
+  font-size:16px; 
+  position: absolute;  
+  left: 25px;
+  width: 500px;
+  text-align:justify;
+  letter-spacing: 0px;
+  color: #323130;
+  opacity: 1;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46.6px;
+  height: 22.44px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .264s;
+  transition: .264s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 17.16px;
+  width: 17.16px;
+  left: 2.64px;
+  bottom: 2.64px;
+  background-color: white;
+  -webkit-transition: .264s;
+  transition: .264s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17.16px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

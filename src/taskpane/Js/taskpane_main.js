@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+let _user_info;
+
 function save_user_settings_to_roaming_settings()
 {
   Office.context.roamingSettings.saveAsync(function (asyncResult)

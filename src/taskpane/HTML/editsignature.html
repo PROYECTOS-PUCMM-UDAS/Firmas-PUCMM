@@ -5,23 +5,23 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>PUCMM firma dinámica</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>-->
-  <link href="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/CSS/editsignature.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+  <link href="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/CSS/editsignature.css" rel="stylesheet" type="text/css" media="all">
   <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/utilities.js"></script>
   <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/taskpane_render.js"></script>
-  <!--<script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/signature_templates.js"></script>
-  <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/signature_loader.js"></script>
-  <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/taskpane_main.js"></script>-->
+  <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/signature_templates.js"></script>
+  <script type="text/javascript" src="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/Js/taskpane_main.js"></script>
 </head>
  
 <body>  
   <div class="container">
     <h2>Verificar firma</h2>
-    <p>1. Espere visualizar su información completa (Nombre completo, correo electrónico, puesto y departamento).<br/><br/>
+    <p>1. Espere visualizar su información (Nombre completo, correo electrónico, puesto y departamento).<br/><br/>
       2. Haga clic en el botón guardar para salvar la información.
     </p>
 
@@ -33,12 +33,21 @@
 
     <input type="text" id="phone_number" placeholder="Phone number" readonly/>
 
-    <input type="text" placeholder="Eg: Thank you," id="greeting_text" readonly style="display:none;"/>
+    <!--<input type="text" placeholder="Eg: Thank you," id="greeting_text" readonly style="display:none;"/>-->
 
     <input type="text" placeholder="Dependencia" id="preferred_pronoun" readonly />
 
+        <!--<p style = "position:relative; left: 0px; top:35.5px;"> Sobrescribir la firma de Outlook</p>-->
+      <label id="label-checkbox" class="switch">
+        <input id="checkbox_sig" type="checkbox" checked>
+         <span class="slider round"></span>
+       </label>
+
+        <div style="height:60px;"><br></div>
+
     <button id="next_button_t1" class="registerbtn" onclick="create_user_info()">Guardar</button>
 <!--
+    
     <button id="reset_all_config_btn" class="registerbtn" onclick="reset_all_configuration()">RESET ALL</button>
 -->
   <p id="message-successful">¡Guardado! Puede cerrar este panel.</p>
