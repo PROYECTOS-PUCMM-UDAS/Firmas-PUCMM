@@ -30,7 +30,7 @@ function on_initialization_complete()
       _message = $("p#message");
 
       prepopulate_from_userprofile();
-      load_saved_user_info();
+      cargar_datos();
 		}
 	);
 }
@@ -138,7 +138,7 @@ function create_user_info()
     user_info.email = email;
     user_info.job =  _job_title.val().trim();
     user_info.phone = _phone_number.val().trim();
-    user_info.greeting = _greeting_text.val().trim();
+    //user_info.greeting = _greeting_text.val().trim();
     user_info.pronoun = _preferred_pronoun.val().trim();
 
     if (user_info.pronoun !== "")
@@ -146,9 +146,9 @@ function create_user_info()
       user_info.pronoun = "" + user_info.pronoun + "";
     }
 
-    //console.log(user_info);
+    
     localStorage.setItem('user_info', JSON.stringify(user_info));
-    navigate_to_taskpane_assignsignature();
+    save_signature_settings();
   }
 }
 

@@ -56,14 +56,7 @@ function checkSignature(eventObj) {
 function insert_auto_signature(compose_type, user_info, eventObj) {
   let template_name = get_template_name(compose_type);
   let signature_info = get_signature_info(template_name, user_info);
-  let savedSignature = Office.context.roamingSettings.get("template_A_info");
-  if(savedSignature){
-    addTemplateSignature(savedSignature, eventObj);
-    //console.log("Firma encontrada en roaming settings.");
-  } else {
     addTemplateSignature(signature_info, eventObj);
-    //console.log("No existe firma en roaming settings.");
-  }  
 }
 
 /**
@@ -183,7 +176,7 @@ function get_template_A_info(user_info) {
     str += user_info.greeting + "<br/>";
   }
 
-  str +='<table border="0" cellpadding="5" cellspacing="5"><tbody><tr><td valign="top"><font size="3" color="#17365d" face="Arial">';
+  str +='<table border="0" cellpadding="1" cellspacing="1"><tbody><tr><td valign="top"><font size="3" color="#17365d" face="Arial">';
   str +='<strong>'+ user_info.name +'</strong></font>';
   str +='<br><font size="2" face="Arial">'+ user_info.job +'</font><br>';
   str +='<font size="3" color="#17365d" face="Arial">';
@@ -191,32 +184,24 @@ function get_template_A_info(user_info) {
   str += '</strong></font><br><font size="2" face="Arial">Tel.:';
   str += is_valid_data(user_info.phone) ? user_info.phone + "<br/>" : "";
   str += user_info.email;
-  str +='</font></td></tr><tr><td><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td width="240" height="81"><img src="https://laramirez0310.github.io/OfficeSignature/assets/marca-pucmm.jpg" width="auto" height="70" alt="Pontificia Universidad Católica Madre y Maestra"></td><td width="15"></td><td style="padding:0 0 0 15px;border-left-style:solid;border-left-width:1pt;border-left-color:#7f7f7f"><p><font size="2" face="Arial"><strong>Campus de Santiago:</strong><br>Autopista Duarte km. 1½, Santiago, R.D.';
-  str +='<br><br><strong>Campus de Santo Domingo:</strong><br>Av. Abraham Lincoln. esq. Av. Bolívar, Santo Domingo, R.D.</font></p></td></tr></tbody></table></td></tr><tr><td height="70" align="left" valign="middle"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td width="600" height="70"><img src="https://pucmm.edu.do/PublishingImages/firma-60aniv/BannerFirma60aniv.png" width="600" height="70" alt="60 Aniversario PUCMM"></td><td width="15"></td><td class="social" style="display: flex; align-items: center;justify-content: space-around;" width="150" height="70"><a class="social-icons" href="http://www.facebook.com/pucmm/" target="_blank"><img style="margin:2px;" src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/facebook.png" alt="Facebook PUCMM" width="24" height="24"></a><a class="social-icons" href="http://twitter.com/pucmm/" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/twitter.png" style="margin:2px;" alt="Twitter PUCMM" width="24" height="25"></a><a class="social-icons" href="http://www.instagram.com/pucmm" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/instagram.png" style="margin:2px;" alt="Instagram PUCMM" width="24" height="25"></a><a class="social-icons" href="http://www.youtube.com/pucmmtv/" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/youtube.png" style="margin:2px;" alt="Youtube PUCMM" width="24" height="25"></a><a class="social-icons" href="https://www.linkedin.com/edu/school?id=12020" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/linkedin.png" style="margin:2px;" alt="Linkedin PUCMM" width="24" height="25"></a></td></tr></tbody></table></td></tr><tr><td><img src="https://www.pucmm.edu.do/PublishingImages/firma-60aniv/Green.gif" width="14" height="14">';
-  str +='<font color="#7F7F7F" size="3" face="Arial">No me imprimas si no es necesario.</font></td></tr><tr><td><p style="margin:0"><font color="#7d7d7d" size="1" face="Arial">NOTA DE CONFIDENCIALIDAD: La información transmitida, incluidos los archivos adjuntos, está dirigida solo a la persona o entidad a la que ha sido remitida y puede contener información confidencial y/o privilegiada. Cualquier difusión u otro uso de la misma, o tomar cualquier acción basada en esta información por personas o entidades distintas al destinatario, está prohibido. Si ha recibido este mensaje por error, por favor contactar al remitente y destruya cualquier copia de esta información.<br>CONFIDENTIALITY NOTE: The information transmitted, including attachments, is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information by persons or entities other than the intended recipient is prohibited. If you received this in error, please contact the sender and destroy any copies of this information.</font></p></td></tr></tbody></table>';
-
-  //Office.context.roamingSettings.remove("template_A_info");
-
-  let template_A_Info = {
-    signature: str,
-    logoBase64:
-      "iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAEeSURBVFhHzdhBEoIwDIVh4EoeQJd6YrceQM+kvo5hQNokLymO/4aF0/ajlBl1fL4bEp0uj3K9XQ/lGi0MEcB3UdD0uVK1EEj7TIuGeBaKYCgIswCLcUMid8mMcUEiCMk71oRYE+Etsd4UD0aFeBBSFtOEMAgpg6lCIggpitlAMggpgllBeiAkFjNDeiIkBlMgeyAkL6Z6WJdlEJJnjvF4vje/BvRALNN23tyRXzVpd22dHSZtLhjMHemB8cxRINZZyGCssbL2vCN7YLwItHo0PTEMAm3OSA8Mi0DVw5rBRBCoCkERTBSBmhDEYDII5PqlZy1iZSGQuiOSZ6JW3rEuCIpgmDFuCGImZuEUBHkWiOweDUHaQhEE+pM/aobhBZaOpYLJeeeoAAAAAElFTkSuQmCC",
-    logoFileName: logoFileName,
-  };
-  let templateExists = Office.context.roamingSettings.get("template_A_info");
-  if(!templateExists)
-  {
-    Office.context.roamingSettings.set("template_A_info", JSON.stringify(template_A_Info));
-    Office.context.roamingSettings.saveAsync(function (asyncResult) {
-      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-       // console.log("Datos de la firma guardados satisfactoriamente.");
-      } else {
-       // console.log("Error guardando datos de firma: " + asyncResult.error.message);
-      }
-    });
-  }
+  str +='</font></td></tr><tr><td><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td width="240" height="81">';
+  str +='<a href="https://pucmm.edu.do/"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/marca-pucmm.jpg" width="258" height="87" alt="Pontificia Universidad Católica Madre y Maestra"></a></td><td width="15"></td>';
+  str +='<td style="padding:0 0 0 15px;border-left-style:solid;border-left-width:1pt;border-left-color:#7f7f7f">';
+  str +='<p><font size="2" face="Arial"><strong>Campus de Santiago:</strong><br>Autopista Duarte km. 1½, Santiago, R.D.';
+  str +='<br><br><strong>Campus de Santo Domingo:</strong><br>Av. Abraham Lincoln esq. Av. Simón Bolívar, Santo Domingo, R.D.</font></p></td></tr></tbody></table></td></tr><tr><td height="70" align="left" valign="middle">';
+  str +='<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td width="600" height="70">';
+  str +='<a href="https://pucmm.edu.do/" ><img src="https://pucmm.edu.do/PublishingImages/firma-addin/banner.png" width="600" height="70" alt="Banner PUCMM"> </a>';
+  str +='</td><td width="15"></td><td class="social" style="display: flex; align-items: center;justify-content: space-around;" width="150" height="70">';
+  str +='<a class="social-icons" href="http://www.facebook.com/pucmm/" target="_blank"><img style="margin:2px;" src="https://www.pucmm.edu.do/PublishingImages/firma-addin/facebook.png" alt="Facebook PUCMM" width="24" height="24"></a>';
+  str +='<a class="social-icons" href="http://twitter.com/pucmm/" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/twitter.png" style="margin:2px;" alt="Twitter PUCMM" width="24" height="25"></a>';
+  str +='<a class="social-icons" href="http://www.instagram.com/pucmm" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/instagram.png" style="margin:2px;" alt="Instagram PUCMM" width="24" height="25"></a>';
+  str +='<a class="social-icons" href="http://www.youtube.com/pucmmtv/" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/youtube.png" style="margin:2px;" alt="Youtube PUCMM" width="24" height="25"></a>'; 
+  str +='<a class="social-icons" href="https://www.linkedin.com/edu/school?id=12020" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/linkedin.png" style="margin:2px;" alt="Linkedin PUCMM" width="24" height="25"></a></td></tr></tbody></table></td></tr><tr><td>';
+  str +='<img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/Green.gif" width="14" height="14">&nbsp;&nbsp;';
+  str +='<font color="#7F7F7F" size="1" face="Arial">No me imprimas si no es necesario.</font></td></tr><tr><td>';
+  str +='<p style="margin:0"><font color="#7d7d7d" size="1" face="Arial">NOTA DE CONFIDENCIALIDAD: La información transmitida, incluidos los archivos adjuntos, está dirigida solo a la persona o entidad a la que ha sido remitida y puede contener información confidencial y/o privilegiada. Cualquier difusión u otro uso de la misma, o tomar cualquier acción basada en esta información por personas o entidades distintas al destinatario, está prohibido. Si ha recibido este mensaje por error, por favor contactar al remitente y destruya cualquier copia de esta información.<br>';
+  str +='<br>CONFIDENTIALITY NOTE: The information transmitted, including attachments, is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information by persons or entities other than the intended recipient is prohibited. If you received this in error, please contact the sender and destroy any copies of this information.</font></p></td></tr></tbody></table>';
   
-
   // return object with signature HTML, logo image base64 string, and filename to reference it with.
   return {
     signature: str,
@@ -246,7 +231,7 @@ function get_template_B_info(user_info) {
   str += "<tr>";
   // Reference the logo using a URI to the web server <img src='https://...
   str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://www.pucmm.edu.do/PublishingImages/firma-60aniv/logoFirma.jpg' alt='Logo' /></td>";
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://www.pucmm.edu.do/PublishingImages/firma-addin/logoFirma.jpg' alt='Logo' /></td>";
   str += "<td style='padding-left: 5px;'>";
   str += "<strong>" + user_info.name + "</strong>";
   str += is_valid_data(user_info.pronoun) ? "&nbsp;" + user_info.pronoun : "";

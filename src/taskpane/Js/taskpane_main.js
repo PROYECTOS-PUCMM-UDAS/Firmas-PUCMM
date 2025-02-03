@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+let _user_info;
+
 function save_user_settings_to_roaming_settings()
 {
   Office.context.roamingSettings.saveAsync(function (asyncResult)
@@ -42,7 +44,7 @@ function save_signature_settings()
 
 	disable_client_signatures_if_necessary();
 	test_template_A();
-	$("#message").show("slow");
+	$("#message-successful").show("slow");
   }
   else
   {

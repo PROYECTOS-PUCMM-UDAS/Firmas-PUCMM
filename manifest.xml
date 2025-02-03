@@ -9,8 +9,8 @@
   <DefaultLocale>en-us</DefaultLocale>
   <DisplayName DefaultValue="Firma PUCMM"/>
   <Description DefaultValue="Complemento para establecer firma de correo"/>
-  <IconUrl DefaultValue="https://laramirez0310.github.io/OfficeSignature/assets/escudo-pucmm.png"/>
-  <HighResolutionIconUrl DefaultValue="https://laramirez0310.github.io/OfficeSignature/assets/escudo-pucmm.png"/>
+  <IconUrl DefaultValue="https://www.pucmm.edu.do/PublishingImages/firma-addin/icono.png"/>
+  <HighResolutionIconUrl DefaultValue="https://www.pucmm.edu.do/PublishingImages/firma-addin/icono.png"/>
   <SupportUrl DefaultValue="https://www.pucmm.edu.do"/>
   <Requirements>
     <Sets DefaultMinVersion="1.1">
@@ -22,7 +22,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://laramirez0310.github.io/OfficeSignature/src/taskpane/HTML/editsignature.html"/>
+        <SourceLocation DefaultValue="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/HTML/editsignature.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -110,19 +110,19 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon16x16" DefaultValue="https://laramirez0310.github.io/OfficeSignature/assets/escudo-pucmm.png"></bt:Image>
+          <bt:Image id="Icon16x16" DefaultValue="https://www.pucmm.edu.do/PublishingImages/firma-addin/icono.png"></bt:Image>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="residUrl0" DefaultValue="https://laramirez0310.github.io/OfficeSignature/src/taskpane/HTML/editsignature.html"></bt:Url>
-          <bt:Url id="Autorun" DefaultValue="https://laramirez0310.github.io/OfficeSignature/src/runtime/HTML/autorunweb.html"></bt:Url>
-          <bt:Url id="runtimeJs" DefaultValue="https://laramirez0310.github.io/OfficeSignature/src/runtime/Js/autorunshared.js"></bt:Url>
+          <bt:Url id="residUrl0" DefaultValue="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/taskpane/HTML/editsignature.html"></bt:Url>
+          <bt:Url id="Autorun" DefaultValue="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/runtime/HTML/autorunweb.html"></bt:Url>
+          <bt:Url id="runtimeJs" DefaultValue="https://proyectos-pucmm-udas.github.io/Firmas-PUCMM/src/runtime/Js/autorunshared.js"></bt:Url>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="residGL0" DefaultValue="Signature Injector"></bt:String>
           <bt:String id="residStr0" DefaultValue="Establecer firma"></bt:String>
         </bt:ShortStrings>
         <bt:LongStrings>
-          <bt:String id="residAppDesc" DefaultValue="Desarrollado por Innovación y Tecnología para el Aprendizaje y Comunicación Digital."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Complemento para Outlook insertar firma automatica del usuario en el correo electrónico."></bt:String>
           <bt:String id="residTT0" DefaultValue="Panel de propiedades disponibles."></bt:String>
         </bt:LongStrings>
       </Resources>
