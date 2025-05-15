@@ -189,8 +189,8 @@ function get_template_A_info(user_info) {
   str +='<td style="padding:0 0 0 15px;border-left-style:solid;border-left-width:1pt;border-left-color:#7f7f7f">';
   str +='<p><font size="2" face="Arial"><strong>Campus de Santiago:</strong><br>Autopista Duarte km. 1½, Santiago, R.D.';
   str +='<br><br><strong>Campus de Santo Domingo:</strong><br>Av. Abraham Lincoln esq. Av. Simón Bolívar, Santo Domingo, R.D.</font></p></td></tr></tbody></table></td></tr><tr><td height="70" align="left" valign="middle">';
-  str +='<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td width="600" height="70">';
-  str +='<a href="https://pucmm.edu.do/" ><img src="https://pucmm.edu.do/PublishingImages/firma-addin/banner.png" width="600" height="70" alt="Banner PUCMM"> </a>';
+  str +='<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td style="width:auto; height:auto;">';
+  str +='<a href="https://pucmm.edu.do/" ><img src="https://pucmm.edu.do/PublishingImages/firma-addin/banner.png" style="width:auto; height:auto;" alt="Banner PUCMM"> </a>';
   str +='</td><td width="15"></td><td class="social" style="display: flex; align-items: center;justify-content: space-around;" width="150" height="70">';
   str +='<a class="social-icons" href="http://www.facebook.com/pucmm/" target="_blank"><img style="margin:2px;" src="https://www.pucmm.edu.do/PublishingImages/firma-addin/facebook.png" alt="Facebook PUCMM" width="24" height="24"></a>';
   str +='<a class="social-icons" href="http://twitter.com/pucmm/" target="_blank"><img src="https://www.pucmm.edu.do/PublishingImages/firma-addin/twitter.png" style="margin:2px;" alt="Twitter PUCMM" width="24" height="25"></a>';
